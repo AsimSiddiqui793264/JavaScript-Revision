@@ -9,7 +9,7 @@ const para = document.createElement("p");
 let info = document.querySelector(".info");
 
 let guessArray = [];
-let numGuess = 1;
+let numGuess = 0;
 
 let playGame = true;
 
@@ -24,25 +24,36 @@ if (playGame) {
 function validateGuess(guess) {
   if (isNaN(guess)) {
     alert("Please enter a valid number");
-    return false;
+    return;
   }
   if (guess < 1 || guess > 100) {
     alert("Please enter a number between 1 and 100");
-    return false;
-  } else {
-    guessArray.push(guess);
-    displayMessage(guess);
-    if (numGuess === 11) {
-      displayGuess(guess);
-      displayMessage(
-        `Game Over! You've used all 10 guesses. The random number was ${randonNumber}`,
-      );
-      endGame();
-    } else {
-      displayGuess(guess);
-      checkGuess(guess);
-    }
+    return;
   }
+
+  if (numGuess >= 10) {
+    displayMessage(
+      `Game Over! You've used all 10 guesses. The random number was ${randonNumber}`,
+    );
+    endGame();
+    return;
+  }
+  guessArray.push(guess);
+  displayGuess(guess);
+  checkGuess(guess);
+
+  // else {
+  //   if (numGuess >= 10) {
+  //     // displayGuess(guess);
+  //     displayMessage(
+  //       `Game Over! You've used all 10 guesses. The random number was ${randonNumber}`,
+  //     );
+  //     endGame();
+  //     return
+  //   } else {
+  //
+  //   }
+  // }
 }
 
 function checkGuess(guess) {
@@ -59,8 +70,8 @@ function checkGuess(guess) {
 function displayGuess(guess) {
   userInput.value = "";
   guessDisplay.textContent += `${guess}; `;
-  remainingDisplay.textContent = 10 - guessArray.length;
   numGuess++;
+  remainingDisplay.textContent = 10 - numGuess;
 }
 
 function displayMessage(message) {
@@ -81,14 +92,16 @@ function newGame() {
   const newGameBtn = document.getElementById("newGame");
   newGameBtn.addEventListener("click", (e) => {
     e.preventDefault();
-    userInput.value = "";
+    randonNumber = parseInt(Math.random() * 100 + 1);
     userInput.removeAttribute("disabled");
+    userInput.value = "";
     guessArray = [];
-    numGuess = 1;
-    guessDisplay.textContent += `${guess}; `;
-    remainingDisplay.textContent = 10 - guessArray.length;
-    numGuess++;
-    info.remove(para);
+    numGuess = 0;
+    guessDisplay.textContent = "";
+    remainingDisplay.textContent = 10;
+    messageDisplay.textContent = "";
+    // numGuess++;
+    info.removeChild(para);
     playGame = true;
   });
 }
