@@ -1,83 +1,93 @@
-  body {
-        margin: 0;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-        font-family: 'Segoe UI', sans-serif;
-        color: white;
-    }
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    font-family: 'Segoe UI', sans-serif;
+    color: white;
+    overflow-x: hidden;
+}
 
-    .game-box {
-        width: 330px;
-        padding: 25px;
-        background: rgba(255, 255, 255, 0.08);
-        backdrop-filter: blur(12px);
-        border-radius: 15px;
-        text-align: center;
-        box-shadow: 0 15px 40px rgba(0,0,0,0.5);
-        animation: fadeIn 1s ease;
-    }
+.game-box {
+    width: 90%;
+    max-width: 330px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+    animation: fadeIn 1s ease;
+}
 
-    @keyframes fadeIn {
-        from {opacity: 0; transform: translateY(20px);}
-        to {opacity: 1; transform: translateY(0);}
-    }
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
 
-    .game-box h2 {
-        margin-bottom: 6px;
-        font-size: 18px;
-        letter-spacing: 1px;
-    }
+.game-box h2 {
+    margin-bottom: 6px;
+    font-size: 18px;
+}
 
-    .game-box p {
-        font-size: 13px;
-        color: #ddd;
-        line-height: 1.4;
-    }
+.game-box p {
+    font-size: 13px;
+    color: #ddd;
+}
 
-    .game-box h1 {
-        margin: 25px 0 15px;
-        font-size: 30px;
-        font-weight: 600;
-    }
+.game-box h1 {
+    margin: 20px 0;
+    font-size: 28px;
+}
 
-    input {
-        width: 100%;
-        padding: 12px;
-        border-radius: 8px;
-        border: none;
-        outline: none;
-        font-size: 16px;
-        margin-bottom: 15px;
-        text-align: center;
-    }
+input {
+    width: 100%;
+    height: 50px;
+    padding: 0 15px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    text-align: center;
+    box-sizing: border-box;
+}
 
-    button {
-        width: 100%;
-        padding: 12px;
-        border-radius: 8px;
-        border: none;
-        background: linear-gradient(135deg, #00c6ff, #0072ff);
-        color: white;
-        font-size: 16px;
-        cursor: pointer;
-        transition: 0.3s;
-    }
+input::placeholder {
+    color: #777;
+    font-size: 15px;
+}
 
-    button:hover {
-        transform: scale(1.03);
-        box-shadow: 0 8px 20px rgba(0,114,255,0.6);
-    }
 
-    .info {
-        margin-top: 18px;
-        font-size: 13px;
-        color: #eee;
-    }
+button {
+    width: 100%;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
 
-    .info span {
-        color: #00c6ff;
-        font-weight: 600;
-    }
+
+button:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 20px rgba(0,114,255,0.6);
+}
+
+.info {
+    margin-top: 15px;
+    font-size: 13px;
+}
+
+.info span {
+    color: #00c6ff;
+    font-weight: 600;
+}
+
+@media (max-width: 480px) {
+    .game-box h1 { font-size: 24px; }
+    input, button { font-size: 14px; padding: 10px; }
+}
