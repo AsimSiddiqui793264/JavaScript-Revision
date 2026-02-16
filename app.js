@@ -41,19 +41,6 @@ function validateGuess(guess) {
   guessArray.push(guess);
   displayGuess(guess);
   checkGuess(guess);
-
-  // else {
-  //   if (numGuess >= 10) {
-  //     // displayGuess(guess);
-  //     displayMessage(
-  //       `Game Over! You've used all 10 guesses. The random number was ${randonNumber}`,
-  //     );
-  //     endGame();
-  //     return
-  //   } else {
-  //
-  //   }
-  // }
 }
 
 function checkGuess(guess) {
@@ -100,7 +87,6 @@ function newGame() {
     guessDisplay.textContent = "";
     remainingDisplay.textContent = 10;
     messageDisplay.textContent = "";
-    // numGuess++;
     info.removeChild(para);
     playGame = true;
   });
